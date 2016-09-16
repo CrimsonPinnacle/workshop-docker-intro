@@ -1,0 +1,19 @@
+# Set Python 2.7 base image
+FROM python:2.7
+
+# File Author / Maintainer
+MAINTAINER Toddy Mladenov <toddysm@crimsonpinnacle.com>
+
+# Add the content from /python folder to the /application folder
+CMD mkdir /application
+ADD ./python /application
+ADD ./requirements.txt /application
+
+# Set the working directory
+WORKDIR /application
+
+# Install the requirements
+RUN pip install -r requirements.txt
+
+# Run the application
+CMD python tornado_app.py
